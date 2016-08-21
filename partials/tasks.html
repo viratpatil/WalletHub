@@ -1,0 +1,70 @@
+<h2>List Of Employees</h2>
+
+<input type="text"  placeholder="Search" ng-model="searchText">
+<h3>{{searchText}}</h3>
+<div style="height:300px;overflow:auto">
+<table class="table table-hover table-striped table-bordered" style="margin-top:20px">
+    <thead>
+        <tr>
+            <td><a  ng-click="sortType = 'name'; sortReverse = !sortReverse" style="cursor: pointer;">
+            Name 
+            <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span>
+          </a></td>
+            <td><a  ng-click="sortType = 'price'; sortReverse = !sortReverse" style="cursor: pointer;">
+            Price 
+            <span ng-show="sortType == 'price' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'price' && sortReverse" class="fa fa-caret-up"></span>
+          </a></td>
+            <td><a  ng-click="sortType = 'age'; sortReverse = !sortReverse" style="cursor: pointer;">
+            Age 
+            <span ng-show="sortType == 'age' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'age' && sortReverse" class="fa fa-caret-up"></span>
+          </a></td>
+            <td>Gender</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        <tr ng-repeat="player in employees | orderBy:sortType:sortReverse | filter:searchText">
+            <td>{{ player.name }}</td>
+            <td>{{ player.price }}</td>
+            <td>{{ player.age }}</td>
+            <td>{{ player.gender }}</td>
+        </tr>
+        
+    </tbody>
+    
+</table>
+</div>
+<div style="margin-top:50px;">
+        <span>Value1</span></span><input type="text" id="input1" ng-model='value1' ng-blur="calculateValues()" onkeypress="return isNumber(event)"/>
+        <span style="margin-left:15px;">Value2</span><input style="margin-left:5px;" type="text" id="input2" ng-model='value2' ng-blur="calculateValues()" onkeypress="return isNumber(event)"/>
+        <span style="margin-left:15px;">Value3</span><input style="margin-left:5px;" type="text" id="input3" ng-model='value3' ng-blur="calculateValues()" onkeypress="return isNumber(event)"/>
+        <span style="margin-left:15px;">Total</span><input style="margin-left:5px;" type="text" id="total" ng-model='total' ng-blur="calculateValuesOnTotalChange()" onkeypress="return isNumber(event)"/>
+</div>
+
+<div style="margin-top:50px;">
+
+<span >Phone Directive</span><input phone ng-model="phoneValue" onkeypress="return isNumber(event)" style="margin-left:15px;"/>
+<span style="margin-left:15px;">Currency Directive</span><input curr ng-model="currencyValue" onkeypress="return isNumber(event)" style="margin-left:15px;"/>
+
+</div>
+
+                <div style="margin-top:50px;">
+                    <span>Credit Card Number</span>
+
+                    <input type="text" id="first" class="numbert" maxlength="5" size="5">
+                    -
+                    <input type="text" id="second" class="numbert" maxlength="5" size="5">
+                    -
+                    <input type="text" id="third" class="numbert" maxlength="5" size="5">
+                </div>
+
+<div style="margin-top:50px;">
+
+    <h2>Sharing Value Across Controller Via Service</h2>
+    <h3>{{myValue}}</h3>
+
+</div>
